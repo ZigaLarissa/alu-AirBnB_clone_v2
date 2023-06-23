@@ -1,7 +1,9 @@
 #!/usr/bin/python3
-# import fabric module
-from fabric.api import local
+"""Fabric script that creates and distributes an archive to your web servers"""
+
+from fabric import Connection
 from datetime import datetime
+import os
 
 
 def do_pack():
@@ -11,9 +13,14 @@ def do_pack():
     archive_name = "web_static_{}.tgz".format(timestamp)
     archive_path = "versions/{}".format(archive_name)
 
+    # Create the versions folder if it doesn't exist
+    if not os.path.exists("versions"):
+        os.makedirs("versions")
+
     try:
-        local("mkdir -p versions")
-        local("tar -czvf {} web_static".format(archive_path))
+        # Create the .tgz archive
+        with Connection('localhost') as conn:
+            conn.local("tar -czvf {} web_static".format(archive_path))
         return archive_path
     except Exception as e:
         print("Error: {}".format(e))
