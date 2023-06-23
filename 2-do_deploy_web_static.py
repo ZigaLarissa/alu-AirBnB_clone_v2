@@ -5,7 +5,7 @@ from os.path import exists
 
 env.hosts = ["54.209.26.141", "18.215.182.32"]
 env.user = "ubuntu"
-env.key = "~/larissa/.ssh/id_rsa"
+env.key = "~/.ssh/id_rsa"
 
 
 def do_deploy(archive_path):
