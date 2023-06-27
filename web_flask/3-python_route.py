@@ -21,7 +21,9 @@ def hello_c(text):
 
 
 @app.route('/python', strict_slashes=False)
-def hello_python(text='is cool'):
+def hello_python(text):
+    if (text == ""):
+        text = "is cool"
     return 'Python ' + text.replace('_', ' ')
 
 if __name__ == "__main__":
