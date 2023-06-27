@@ -25,6 +25,7 @@ def hello_c(text):
 def python(text):
     return 'Python ' + text.replace('_', ' ')
 
+
 @app.route('/number/<int:n>', strict_slashes=False)
 def number(n):
     return "{} is a number".format(n)
