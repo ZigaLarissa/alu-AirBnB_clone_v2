@@ -23,7 +23,7 @@ def hello_c(text):
 @app.route('/python/', defaults={'text': 'is cool'}, strict_slashes=False)
 @app.route('/python/<text>', strict_slashes=False)
 def python(text):
-    return 'Python ' + text.replace('_', ' '
+    return 'Python ' + text.replace('_', ' ')
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
