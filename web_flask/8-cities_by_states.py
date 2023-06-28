@@ -3,15 +3,22 @@
 from flask import Flask, render_template
 from models import storage
 from models.state import State
+from flask import render_template
 
 
 app = Flask(__name__)
 
 
-@app.route('cities_by_states', strict_slashes=False)
-def cities_by_states():
-    states = storage.all(State)
-    return render_template('7-states_list.html', states=states)
+@app.route('/states_list', strict_slashes=False)
+def states_list():
+    states = storage.all(State).values()
+    sorted_states = sorted(states, key=lambda state: state.name)
+    return render_template('7-states_list.html', states=sorted_states)
+
+
+@app.teardown_appcontext
+def teardown(exceptions):
+    storage.close()
 
 
 if __name__ == "__main__":
