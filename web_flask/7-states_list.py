@@ -8,6 +8,7 @@ from flask import render_template
 
 app = Flask(__name__)
 
+
 @app.route('/states_list', strict_slashes=False)
 def states_list():
     states = storage.all(State).values()
@@ -17,8 +18,8 @@ def states_list():
 
 @app.teardown_appcontext
 def teardown(exceptions):
-    storage.close()   
-    
-    
+    storage.close()
+
+
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000) 
+    app.run(host='0.0.0.0', port=5000)
