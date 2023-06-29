@@ -14,7 +14,8 @@ app = Flask(__name__)
 def states():
     """Comment"""
     states = storage.all('State').values()
-    return render_template('7-states_list.html', states=states)
+    sorted_states = sorted(states, key= lambda state: state.name)
+    return render_template('7-states_list.html', states=sorted_states)
 
 
 @app.teardown_appcontext
