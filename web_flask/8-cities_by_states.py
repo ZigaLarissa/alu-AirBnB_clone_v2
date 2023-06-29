@@ -12,7 +12,7 @@ app = Flask(__name__)
 def cities_by_states():
     states = storage.all(State)
     sorted_states = sorted(states, key=lambda state: state.name)
-    return render_template('8-states_list.html', states=states)
+    return render_template('8-states_list.html', states=sorted_states)
 
 
 @app.teardown_appcontext
