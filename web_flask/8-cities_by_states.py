@@ -16,8 +16,8 @@ def cities_by_states():
 
 
 @app.teardown_appcontext
-def teardown(exceptions):
+def teardown(self):
     storage.close()
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0')
