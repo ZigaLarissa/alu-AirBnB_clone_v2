@@ -15,5 +15,9 @@ def cities_by_states():
     return render_template('8-states_list.html', states=states)
 
 
+@app.teardown_appcontext
+def teardown(exceptions):
+    storage.close()
+
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)
