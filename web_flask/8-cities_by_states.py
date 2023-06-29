@@ -11,7 +11,8 @@ app = Flask(__name__)
 @app.route('/cities_by_states', strict_slashes=False)
 def cities_by_states():
     states = storage.all(State)
-    return render_template('7-states_list.html', states=states)
+    sorted_states = sorted(states, key=lambda state: state.name)
+    return render_template('8-states_list.html', states=states)
 
 
 if __name__ == "__main__":
