@@ -1,7 +1,5 @@
 #!/usr/bin/python3
-
-"""Starts a Flask web application"""
-
+"""scriptt that startsFlask web app"""
 from models import storage
 from models.state import State
 from flask import Flask
